@@ -1,11 +1,11 @@
 export default class View {
-  #btnInit = document.querySelector("#init");
-  #statusElement = document.querySelector("#status");
-  #videoFrameCanvas = document.createElement("canvas");
-  #canvasContext = this.#videoFrameCanvas.getContext("2d", {
+  #btnInit = document.querySelector('#init');
+  #statusElement = document.querySelector('#status');
+  #videoFrameCanvas = document.createElement('canvas');
+  #canvasContext = this.#videoFrameCanvas.getContext('2d', {
     willReadFrequently: true,
   });
-  #videoElement = document.querySelector("#video");
+  #videoElement = document.querySelector('#video');
 
   // Converte o vídeo em imagem (com canvas) para que o worker entenda
   getVideoFrame(video) {
@@ -32,8 +32,12 @@ export default class View {
     this.#btnInit.disabled = false;
   }
 
+  hideButton() {
+    this.#btnInit.style.display = 'none';
+  }
+
   configureOnBtnClick(fn) {
-    this.#btnInit.addEventListener("click", fn);
+    this.#btnInit.addEventListener('click', fn);
   }
 
   log(text) {

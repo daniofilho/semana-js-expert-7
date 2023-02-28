@@ -64,6 +64,7 @@ export default class Controller {
   }
 
   onBtnStart() {
+    this.#view.hideButton();
     this.log('initializing detection...');
     this.#blinkCounter = 0;
     this.loop();

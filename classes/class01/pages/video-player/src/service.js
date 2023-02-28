@@ -42,18 +42,26 @@ export default class Service {
       const lowerRight = prediction.annotations.rightEyeUpper0;
       const upperRight = prediction.annotations.rightEyeLower0;
       const rightEAR = this.#getEAR(upperRight, lowerRight);
+
       // Left eye parameters
       const lowerLeft = prediction.annotations.leftEyeUpper0;
       const upperLeft = prediction.annotations.leftEyeLower0;
       const leftEAR = this.#getEAR(upperLeft, lowerLeft);
 
       // True if the eye is closed
-      const blinked = leftEAR <= EAR_THRESHOLD && rightEAR <= EAR_THRESHOLD;
-      if (!blinked) continue;
+      const blinked = {
+        leftEye: leftEAR <= EAR_THRESHOLD,
+        rightEye: rightEAR <= EAR_THRESHOLD,
+      };
+
+      if (!blinked.leftEye && !blinked.rightEye) continue;
 
       if (!shouldRun()) continue; // limita a quantidade de vezes que a pessoa pisca por tempo (pra evitar que deixe o olho fechado e dispare infinitamente)
 
-      return blinked;
+      if (blinked.leftEye) console.info('Piscou com o olho esquerdo!');
+      if (blinked.rightEye) console.info('Piscou com o olho direito!');
+
+      return blinked.leftEye || blinked.rightEye;
     }
 
     return false;

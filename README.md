@@ -53,8 +53,8 @@ Marque esse projeto com uma estrela 🌟
 
 Aula 01:
 
-Aula 01:
+Aula 02: TERMINEI_SÓ_FALTA_TESTAR
 
-Aula 01:
+Aula 03:
 
-Aula 01:
+Aula 04:
